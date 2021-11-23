@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/juyun/test_hello/src'
+let g:netrw_dirhist_6='/home/juyun/repo/deploy/axe-charts/local/qraftaxe/templates'
+let g:netrw_dirhist_5='/home/juyun/repo/deploy/axe-charts/local/qraftaxe'
+let g:netrw_dirhist_4='/home/juyun/repo/deploy/axe-deployment'
+let g:netrw_dirhist_3='/home/juyun/kubernetes/kubespray/inventory/local/group_vars/all'
+let g:netrw_dirhist_2='/home/juyun/kubernetes/kubespray/inventory/local/group_vars'
+let g:netrw_dirhist_1='/home/juyun/kubernetes/kubespray/inventory'
