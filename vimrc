@@ -46,14 +46,28 @@ filetype plugin indent on
 
 let g:rustfmt_autosave = 1
 let g:solarized_termcolors=256
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+let &t_SR = "\e[4 q"
+
 se nu
 se rnu
 syntax on
 set showmatch
 set ai
+set ruler
+set ls=2
 colorscheme solarized
 if has('gui_running')
 	set background=light
+	set mouse=a
 else
 	set background=dark
+endif
+if has('autocmd')
+    set smartindent
+    filetype on
+    autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType rust setlocal tabstop=4 shiftwidth=4 expandtab
 endif

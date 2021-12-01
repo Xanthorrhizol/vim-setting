@@ -1,0 +1,4 @@
+vi_tags = "rusty-tags.vi"
+emacs_tags = "rusty-tags.emacs"
+ctags_exe = "ctags"
+ctags_options = "-R"
