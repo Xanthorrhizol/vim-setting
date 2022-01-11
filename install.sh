@@ -33,10 +33,10 @@ if [ $(echo $yes | grep -i y | wc -l) -ne 1 ]; then
 fi
 cargo install rusty-tags
 rustup component add rust-src
-if [ $(rustc --version | awk '{ print $2 }' | cut -d '-' -f 1 | cut -d '.' -f 2) -ge 47 ];
+if [ $(rustc --version | awk '{ print $2 }' | cut -d '-' -f 1 | cut -d '.' -f 2) -ge 47 ]; then
   echo 'export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/'
 else
   echo 'export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/'
 fi
 mkdir -p $HOME/.rusty-tags
-cp config.toml $HOME/.rusty-tags/ -y
+cp -f config.toml $HOME/.rusty-tags/

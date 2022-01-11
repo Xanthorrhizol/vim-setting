@@ -37,6 +37,8 @@ Plug 'rust-lang/rust.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'junegunn/fzf.vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -57,6 +59,7 @@ set showmatch
 set ai
 set ruler
 set ls=2
+set synmaxcol=1000
 colorscheme solarized
 if has('gui_running')
 	set background=light
@@ -69,5 +72,6 @@ if has('autocmd')
     filetype on
     autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
-    autocmd FileType rust setlocal tabstop=4 shiftwidth=4 expandtab
+    autocmd FileType rust setlocal tabstop=4 shiftwidth=4 expandtab tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+    autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 endif
