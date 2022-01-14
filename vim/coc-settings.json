@@ -1,0 +1,12 @@
+{
+	"suggest.detailField": "abbr",
+	"suggest.enablePreview": true,
+	"coc.preferences.formatOnSaveFiletypes": ["markdown", "rust"],
+	"languageserver": {
+		"rust": {
+			"command": "rust-analyzer",
+			"rootPatterns":["Cargo.toml"],
+			"filetypes": ["rust"]
+		}
+	}
+}

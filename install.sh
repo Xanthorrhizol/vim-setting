@@ -15,7 +15,7 @@ cp vimrc $HOME/.vimrc
 
 echo "install plugins and language servers"
 vim -c "PlugInstall | q | q"
-vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-json coc-docker"
+vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-json coc-docker coc-rls"
 echo "done"
 
 echo "do you want to setup ctags?"
