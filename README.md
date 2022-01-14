@@ -7,7 +7,7 @@ run install.sh
 ## installed coc
 
 - bash: coc-sh
-- rust: coc-rust-analyzer
+- rust: coc-rust-analyzer, coc-rls
 - c/c++: coc-clangd
 - markdown: coc-markdownlint
 - javascript/typescript: coc-tsserver
