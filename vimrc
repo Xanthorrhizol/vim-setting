@@ -60,13 +60,9 @@ set ai
 set ruler
 set ls=2
 set synmaxcol=1000
+set mouse=a
+set background=dark
 colorscheme solarized
-if has('gui_running')
-	set background=light
-	set mouse=a
-else
-	set background=dark
-endif
 if has('autocmd')
     set smartindent
     filetype on
