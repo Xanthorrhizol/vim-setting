@@ -10,8 +10,13 @@ fi
 if ! [ -d $HOME/.vim ]; then
   mkdir $HOME/.vim
 fi
+if ! [ -d $HOME/.local/bin ]; then
+  mkdir -p $HOME/.local/bin
+fi
+
 cp -r vim/* $HOME/.vim/
 cp vimrc $HOME/.vimrc
+cp rust-analyzer $HOME/.local/bin
 
 echo "install plugins and language servers"
 vim -c "PlugInstall | q | q"
@@ -33,10 +38,14 @@ if [ $(echo $yes | grep -i y | wc -l) -ne 1 ]; then
 fi
 cargo install rusty-tags
 rustup component add rust-src
+SHELLRC="$HOME/.$(echo $SHELL | cut -d '/' -f 3)rc"
 if [ $(rustc --version | awk '{ print $2 }' | cut -d '-' -f 1 | cut -d '.' -f 2) -ge 47 ]; then
-  echo 'export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/'
+  ENV_TO_ADD='export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library/'
 else
-  echo 'export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/'
+  ENV_TO_ADD='export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/'
+fi
+if [ $(cat $SHELLRC | grep RUST_SRC_PATH | wc -l) -eq 0 ]; then
+  echo $ENV_TO_ADD >> $SHELLRC
 fi
 mkdir -p $HOME/.rusty-tags
 cp -f config.toml $HOME/.rusty-tags/
