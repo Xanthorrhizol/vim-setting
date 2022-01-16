@@ -14,13 +14,17 @@ if ! [ -d $HOME/.local/bin ]; then
   mkdir -p $HOME/.local/bin
 fi
 
+if ! [ -d $HOME/.config/coc ]; then
+  mkdir -p $HOME/.config/coc
+fi
+
 cp -r vim/* $HOME/.vim/
 cp vimrc $HOME/.vimrc
 cp rust-analyzer $HOME/.local/bin
 
 echo "install plugins and language servers"
 vim -c "PlugInstall | q | q"
-vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-json coc-docker coc-rls"
+vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-eslint coc-json coc-docker coc-rls"
 echo "done"
 
 echo "do you want to setup ctags?"
