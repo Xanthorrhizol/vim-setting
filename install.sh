@@ -24,15 +24,15 @@ cp -r vim/* $HOME/.vim/
 cp vimrc $HOME/.vimrc
 
 while true; do
-  echo "What's your linux system kind [ARCH(pacman)/debian(apt)/fedora(yum/dnf)]"
-  read $DISTRO
-  if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman"]]; then
-    sudo pacman -Sy rust-analyzer
+  echo "What's your linux system kind [arch(pacman)/debian(apt)/fedora(yum/dnf)]"
+  read DISTRO
+  if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman" ]]; then
+    sudo pacman -S rust-analyzer
     break
-  elif [[ "$DISTRO" == "debian" ]] || [[ "$DISTRO" == "apt" ]] || [[ "$DISTRO" == "ubuntu"]]; then
+  elif [[ "$DISTRO" == "debian" ]] || [[ "$DISTRO" == "apt" ]] || [[ "$DISTRO" == "ubuntu" ]]; then
     sudo apt install -y rust-analyzer # not tested
     break
-  elif [[ "$DISTRO" == "fedora" ]] || [[ "$DISTRO" == "yum" ]] || [[ "$DISTRO" == "dnf"]]; then
+  elif [[ "$DISTRO" == "fedora" ]] || [[ "$DISTRO" == "yum" ]] || [[ "$DISTRO" == "dnf" ]]; then
     sudo yum -y install rust-analyzer # not tested
     break
   fi
@@ -57,13 +57,13 @@ if [ $(echo $yes | grep -i y | wc -l) -ne 1 ]; then
   exit -1
 fi
 
-if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman"]]; then
-    sudo pacman -Sy ctags
+if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman" ]]; then
+    sudo pacman -S ctags
     break
-  elif [[ "$DISTRO" == "debian" ]] || [[ "$DISTRO" == "apt" ]] || [[ "$DISTRO" == "ubuntu"]]; then
+  elif [[ "$DISTRO" == "debian" ]] || [[ "$DISTRO" == "apt" ]] || [[ "$DISTRO" == "ubuntu" ]]; then
     sudo apt install -y ctags # not tested
     break
-  elif [[ "$DISTRO" == "fedora" ]] || [[ "$DISTRO" == "yum" ]] || [[ "$DISTRO" == "dnf"]]; then
+  elif [[ "$DISTRO" == "fedora" ]] || [[ "$DISTRO" == "yum" ]] || [[ "$DISTRO" == "dnf" ]]; then
     sudo yum -y install ctags # not tested
     break
   fi
