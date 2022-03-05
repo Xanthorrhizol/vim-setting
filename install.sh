@@ -1,5 +1,7 @@
 #!/bin/bash
+set -euo pipefail
 cd $(dirname "${BASH_SOURCE[0]}")
+
 echo "It will replace your original vim setting"
 echo "agree?[y/N]"
 read agree
@@ -54,6 +56,18 @@ if [ $(echo $yes | grep -i y | wc -l) -ne 1 ]; then
   echo "install rustc, cargo"
   exit -1
 fi
+
+if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman"]]; then
+    sudo pacman -Sy ctags
+    break
+  elif [[ "$DISTRO" == "debian" ]] || [[ "$DISTRO" == "apt" ]] || [[ "$DISTRO" == "ubuntu"]]; then
+    sudo apt install -y ctags # not tested
+    break
+  elif [[ "$DISTRO" == "fedora" ]] || [[ "$DISTRO" == "yum" ]] || [[ "$DISTRO" == "dnf"]]; then
+    sudo yum -y install ctags # not tested
+    break
+  fi
+
 cargo install rusty-tags
 rustup component add rust-src
 SHELLRC="$HOME/.$(echo $SHELL | cut -d '/' -f 3)rc"
