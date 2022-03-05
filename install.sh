@@ -20,11 +20,25 @@ fi
 
 cp -r vim/* $HOME/.vim/
 cp vimrc $HOME/.vimrc
-cp rust-analyzer $HOME/.local/bin
+
+while true; do
+  echo "What's your linux system kind [ARCH(pacman)/debian(apt)/fedora(yum/dnf)]"
+  read $DISTRO
+  if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman"]]; then
+    sudo pacman -Sy rust-analyzer
+    break
+  elif [[ "$DISTRO" == "debian" ]] || [[ "$DISTRO" == "apt" ]] || [[ "$DISTRO" == "ubuntu"]]; then
+    sudo apt install -y rust-analyzer # not tested
+    break
+  elif [[ "$DISTRO" == "fedora" ]] || [[ "$DISTRO" == "yum" ]] || [[ "$DISTRO" == "dnf"]]; then
+    sudo yum -y install rust-analyzer # not tested
+    break
+  fi
+done
 
 echo "install plugins and language servers"
 vim -c "PlugInstall | q | q"
-vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-eslint coc-json coc-docker coc-rls"
+vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-eslint coc-json coc-docker coc-rust-analyzer"
 echo "done"
 
 echo "do you want to setup ctags?"
