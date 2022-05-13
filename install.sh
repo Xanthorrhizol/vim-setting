@@ -10,7 +10,7 @@ if [ $(echo $agree | grep -i y | wc -l) -eq 0 ]; then
   exit 0
 fi
 
-echo "It needs npm. Did you installed npm?[y/N]"
+echo "It needs npm. Did you install npm?[y/N]"
 read yes
 if [[ ! "$yes" == "y" ]] && [[ ! "$yes" == "Y" ]]; then
   echo "Please install npm first"
@@ -52,14 +52,14 @@ vim -c "PlugInstall | q | q"
 vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-eslint coc-json coc-docker"
 echo "done"
 
-echo "do you want to setup ctags?"
+echo "do you want to setup ctags? [y/N]"
 read yes
 if [ $(echo $yes | grep -i y | wc -l) -ne 1 ]; then
   echo "bye"
   exit 0
 fi
 
-echo "did you installed rustc, cargo?"
+echo "did you installed rustc, cargo? [y/N]"
 read yes
 if [ $(echo $yes | grep -i y | wc -l) -ne 1 ]; then
   echo "install rustc, cargo"
