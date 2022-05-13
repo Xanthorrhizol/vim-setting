@@ -9,6 +9,15 @@ if [ $(echo $agree | grep -i y | wc -l) -eq 0 ]; then
   echo "bye"
   exit 0
 fi
+
+echo "It needs npm. Did you installed npm?[y/N]"
+read yes
+if [[ ! "$yes" == "y" ]] && [[ ! "$yes" == "Y" ]]; then
+  echo "Please install npm first"
+  exit -1
+fi
+npm install -g prettier
+
 if ! [ -d $HOME/.vim ]; then
   mkdir $HOME/.vim
 fi
@@ -40,7 +49,7 @@ done
 
 echo "install plugins and language servers"
 vim -c "PlugInstall | q | q"
-vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-eslint coc-json coc-docker coc-rust-analyzer"
+vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-eslint coc-json coc-docker"
 echo "done"
 
 echo "do you want to setup ctags?"
@@ -57,7 +66,8 @@ if [ $(echo $yes | grep -i y | wc -l) -ne 1 ]; then
   exit -1
 fi
 
-if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman" ]]; then
+while true; do
+  if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman" ]]; then
     sudo pacman -S ctags
     break
   elif [[ "$DISTRO" == "debian" ]] || [[ "$DISTRO" == "apt" ]] || [[ "$DISTRO" == "ubuntu" ]]; then
@@ -67,6 +77,7 @@ if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman" ]]; then
     sudo yum -y install ctags # not tested
     break
   fi
+done
 
 cargo install rusty-tags
 rustup component add rust-src

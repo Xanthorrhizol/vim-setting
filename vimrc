@@ -61,7 +61,6 @@ set ruler
 set ls=2
 set synmaxcol=1000
 set mouse=a
-set background=dark
 colorscheme solarized
 if has('autocmd')
     set smartindent
@@ -71,4 +70,6 @@ if has('autocmd')
     autocmd FileType rust setlocal tabstop=4 shiftwidth=4 expandtab tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
     autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
     autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+    autocmd BufWritePost *.ts :silent! exec "!prettier --loglevel silent --write " . expand('%:p') | :silent! exec "e" | :silent! exec "!ctags -R &" | redraw!
+    autocmd BufRead *.ts :setlocal tags=./tags;/
 endif
