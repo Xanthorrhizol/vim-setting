@@ -13,3 +13,9 @@ run install.sh
 - javascript/typescript: coc-tsserver
 - json: coc-json
 - dockerfile: coc-docker
+
+## support features
+
+- ctags for rust, typescript
+- rustfmt
+- typescript prettier
