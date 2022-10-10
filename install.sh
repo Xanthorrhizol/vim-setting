@@ -50,7 +50,7 @@ done
 echo "install plugins and language servers"
 vim -c "PlugUpdate | PlugUpgrade | PlugInstall | q | q"
 vim -c "CocUpdate"
-vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-eslint coc-json coc-docker"
+vim -c "CocInstall coc-sh coc-rust-analyzer coc-clangd coc-markdownlint coc-tsserver coc-eslint coc-json coc-docker coc-groovy"
 echo "done"
 
 echo "do you want to setup ctags? [y/N]"
