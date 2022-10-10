@@ -65,11 +65,14 @@ colorscheme solarized
 if has('autocmd')
     set smartindent
     filetype on
-    autocmd FileType typescript setlocal tabstop=4 shiftwidth=4
-    autocmd FileType javascript setlocal tabstop=4 shiftwidth=4
+    autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
     autocmd FileType rust setlocal tabstop=4 shiftwidth=4 expandtab tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+    autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 expandtab
     autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
     autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
-    autocmd BufWritePost *.ts :silent! exec "!prettier --loglevel silent --write " . expand('%:p') | :silent! exec "e" | :silent! exec "!ctags -R &" | redraw!
+    " enable below if you want to use prettier
+    "autocmd BufWritePost *.ts :silent! exec "!prettier --loglevel silent --write " . expand('%:p') | :silent! exec "e" | :silent! exec "!ctags -R &" | redraw!
+    autocmd BufWritePost *.ts :silent! exec "!ctags -R &" | redraw!
     autocmd BufRead *.ts :setlocal tags=./tags;/
 endif
