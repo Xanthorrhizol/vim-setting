@@ -1116,3 +1116,9 @@ autocmd ColorScheme * if g:colors_name != "solarized" | silent! aunmenu Solarize
 "
 " vim:foldmethod=marker:foldlevel=0
 "}}}
+"Coc {{{
+exe "hi! CocInlayHint"               	.s:fg_violet   .s:bg_none   .s:fmt_none
+exe "hi! CocInlayHintParameter"         .s:fg_violet   .s:bg_none   .s:fmt_none
+exe "hi! CocInlayHintType"              .s:fg_violet   .s:bg_none   .s:fmt_none
+" vim:foldmethod=marker:foldlevel=0
+"}}}
