@@ -36,7 +36,7 @@ while true; do
   echo "What's your linux system kind [arch(pacman)/debian(apt)/fedora(yum/dnf)]"
   read DISTRO
   if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman" ]]; then
-    sudo pacman -S rust-analyzer
+    #sudo pacman -S rust-analyzer
     break
   elif [[ "$DISTRO" == "debian" ]] || [[ "$DISTRO" == "apt" ]] || [[ "$DISTRO" == "ubuntu" ]]; then
     sudo apt install -y rust-analyzer # not tested
