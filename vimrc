@@ -39,6 +39,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'junegunn/fzf.vim'
 
+" bpftrace
+Plug 'mmarchini/bpftrace.vim'
+
 " Initialize plugin system
 call plug#end()
 
