@@ -55,6 +55,14 @@ let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 let &t_SR = "\e[4 q"
 
+" file navigator
+let g:netrw_banner = 0
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
 se nu
 se rnu
 syntax on
@@ -78,4 +86,5 @@ if has('autocmd')
     "autocmd BufWritePost *.ts :silent! exec "!prettier --loglevel silent --write " . expand('%:p') | :silent! exec "e" | :silent! exec "!ctags -R &" | redraw!
     autocmd BufWritePost *.ts :silent! exec "!ctags -R &" | redraw!
     autocmd BufRead *.ts :setlocal tags=./tags;/
+    autocmd VimEnter * :Vexplore
 endif
