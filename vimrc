@@ -78,6 +78,7 @@ if has('autocmd')
     filetype on
     autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType proto setlocal tabstop=2 shiftwidth=2 expandtab
     autocmd FileType rust setlocal tabstop=4 shiftwidth=4 expandtab tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
     autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 expandtab
     autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
