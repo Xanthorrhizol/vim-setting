@@ -42,6 +42,11 @@ Plug 'junegunn/fzf.vim'
 " bpftrace
 Plug 'mmarchini/bpftrace.vim'
 
+" style things
+
+"" indent
+Plug 'nathanaelkane/vim-indent-guides'
+
 " Initialize plugin system
 call plug#end()
 
@@ -62,6 +67,9 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 
 se nu
 se rnu
@@ -88,5 +96,5 @@ if has('autocmd')
     "autocmd BufWritePost *.ts :silent! exec "!prettier --loglevel silent --write " . expand('%:p') | :silent! exec "e" | :silent! exec "!ctags -R &" | redraw!
     autocmd BufWritePost *.ts :silent! exec "!ctags -R &" | redraw!
     autocmd BufRead *.ts :setlocal tags=./tags;/
-    autocmd VimEnter * :Vexplore
+    autocmd VimEnter * :IndentGuidesEnable | :Vexplore
 endif
