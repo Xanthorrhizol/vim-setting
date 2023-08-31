@@ -70,6 +70,7 @@ let g:netrw_winsize = 25
 
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
 
 se nu
 se rnu
@@ -83,6 +84,7 @@ set mouse=a
 colorscheme solarized
 if has('autocmd')
     set smartindent
+    set cursorcolumn
     filetype on
     autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
@@ -96,5 +98,6 @@ if has('autocmd')
     "autocmd BufWritePost *.ts :silent! exec "!prettier --loglevel silent --write " . expand('%:p') | :silent! exec "e" | :silent! exec "!ctags -R &" | redraw!
     autocmd BufWritePost *.ts :silent! exec "!ctags -R &" | redraw!
     autocmd BufRead *.ts :setlocal tags=./tags;/
-    autocmd VimEnter * :IndentGuidesEnable | :Vexplore
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=gray ctermbg=17 | :hi IndentGuidesEven guibg=gray ctermbg=17
+    autocmd VimEnter * :Vexplore
 endif
