@@ -251,6 +251,7 @@ if has('autocmd')
     autocmd FileType groovy setlocal tabstop=4 shiftwidth=4
     autocmd FileType python setlocal tabstop=4 shiftwidth=4
     autocmd FileType cs setlocal shiftwidth=4 softtabstop=-1 tabstop=8
+    autocmd FileType c setlocal tabstop=4 shiftwidth=4
     autocmd FileType indent plugin on
     "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
     "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
