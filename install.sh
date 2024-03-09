@@ -29,6 +29,13 @@ if ! [ -d $HOME/.config/coc ]; then
   mkdir -p $HOME/.config/coc
 fi
 
+echo "Do you want to use Copilot?"
+read yes
+if [[ "$yes" == "y" ]] && [[ "$yes" == "Y" ]]; then
+  git clone https://github.com/github/copilot.vim.git ~/.vim/pack/github/start/copilot.vim
+  vim  -c "Copilot setup"
+fi
+
 cp -r vim/* $HOME/.vim/
 cp vimrc $HOME/.vimrc
 
