@@ -44,12 +44,13 @@ while true; do
   read DISTRO
   if [[ "$DISTRO" == "arch" ]] || [[ "$DISTRO" == "pacman" ]]; then
     #sudo pacman -S rust-analyzer
+    sudo pacman -S pkg-config libunwind
     break
   elif [[ "$DISTRO" == "debian" ]] || [[ "$DISTRO" == "apt" ]] || [[ "$DISTRO" == "ubuntu" ]]; then
-    sudo apt install -y rust-analyzer # not tested
+    sudo apt install -y rust-analyzer pkg-config libunwind-dev # not tested
     break
   elif [[ "$DISTRO" == "fedora" ]] || [[ "$DISTRO" == "yum" ]] || [[ "$DISTRO" == "dnf" ]]; then
-    sudo yum -y install rust-analyzer # not tested
+    sudo yum -y install rust-analyzer pkg-config libunwind-dev # not tested
     break
   fi
 done
@@ -100,3 +101,5 @@ if [ $(cat $SHELLRC | grep RUST_SRC_PATH | wc -l) -eq 0 ]; then
 fi
 mkdir -p $HOME/.rusty-tags
 cp -f config.toml $HOME/.rusty-tags/
+
+cargo install bugstalker
