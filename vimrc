@@ -20,6 +20,9 @@ Plug 'mmarchini/bpftrace.vim'
 " python
 Plug 'davidhalter/jedi-vim'
 
+" go
+Plug 'fatih/vim-go',{ 'do': ':GoUpdateBinaries' }
+
 " C#
 " Set this to 1 to use ultisnips for snippet handling
 let s:using_snippets = 1
@@ -252,9 +255,8 @@ if has('autocmd')
     autocmd FileType python setlocal tabstop=4 shiftwidth=4
     autocmd FileType cs setlocal shiftwidth=4 softtabstop=-1 tabstop=8
     autocmd FileType c setlocal tabstop=4 shiftwidth=4
+    autocmd FileType go setlocal tabstop=4 shiftwidth=4
     autocmd FileType indent plugin on
-    "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-    "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
     " enable below if you want to use prettier
     "autocmd BufWritePost *.ts :silent! exec "!prettier --loglevel silent --write " . expand('%:p') | :silent! exec "e" | :silent! exec "!ctags -R &" | redraw!
     autocmd BufWritePost *.ts :silent! exec "!ctags -R &" | redraw!
