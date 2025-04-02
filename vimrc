@@ -21,15 +21,9 @@ Plug 'mmarchini/bpftrace.vim'
 Plug 'davidhalter/jedi-vim'
 
 " go
-Plug 'fatih/vim-go',{ 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go',{ 'do': ':GoUpdateBinaries' }
 
-" C#
-" Set this to 1 to use ultisnips for snippet handling
-let s:using_snippets = 1
-
-" vim-plug: {{{
-call plug#begin('~/.vim/plugged')
-
+" OmniSharp
 Plug 'OmniSharp/omnisharp-vim'
 
 " Mappings, code-actions available flag and statusline integration
@@ -58,7 +52,7 @@ if s:using_snippets
   Plug 'sirver/ultisnips'
 endif
 
-"" indent
+" indent
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -80,7 +74,7 @@ set completepopup=highlight:Pmenu,border:off
 set backspace=indent,eol,start
 set expandtab
 set shiftround
-set textwidth=80
+"set textwidth=80
 set title
 
 set hidden
@@ -132,11 +126,11 @@ let g:ale_sign_style_warning = '·'
 let g:ale_completion_enabled = 1
 
 let g:ale_linters = { 'cs': ['OmniSharp'], 'rust': ['analyzer'] }
-let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
+let g:ale_fixers = { 'rust': ['trim_whitespace', 'remove_trailing_lines', 'rustfmt'] } 
 
 " rust
-let g:rustfmt_autosave = 1
-let g:ale_rust_cargo_use_clippy = 1
+let g:rustfmt_autosave = 0
+let g:ale_rust_cargo_use_clippy = 0
 let g:syntastic_rust_checkers = ['cargo']
 " }}}
 
@@ -244,25 +238,27 @@ if has('autocmd')
     set cursorcolumn
     set cursorline
     set expandtab
+    set foldmethod=marker
     filetype on
     autocmd FileType typescript setlocal tabstop=2 shiftwidth=2
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2
     autocmd FileType sh setlocal tabstop=2 shiftwidth=2
     autocmd FileType proto setlocal tabstop=2 shiftwidth=2
     autocmd FileType rust setlocal tabstop=4 shiftwidth=4
-    "autocmd FileType rust setlocal tabstop=4 shiftwidth=4 tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
     autocmd FileType groovy setlocal tabstop=4 shiftwidth=4
+    autocmd FileType c setlocal tabstop=4 shiftwidth=4
     autocmd FileType python setlocal tabstop=4 shiftwidth=4
     autocmd FileType cs setlocal shiftwidth=4 softtabstop=-1 tabstop=8
-    autocmd FileType c setlocal tabstop=4 shiftwidth=4
-    autocmd FileType go setlocal tabstop=4 shiftwidth=4
     autocmd FileType indent plugin on
+    autocmd FileType go setlocal tabstop=4 shiftwidth=4
     " enable below if you want to use prettier
     "autocmd BufWritePost *.ts :silent! exec "!prettier --loglevel silent --write " . expand('%:p') | :silent! exec "e" | :silent! exec "!ctags -R &" | redraw!
-    autocmd BufWritePost *.ts :silent! exec "!ctags -R &" | redraw!
+    autocmd BufWritePost *.ts redraw!
+    "autocmd BufWritePost *.ts :silent! exec "!ctags -R &" | redraw!
     autocmd BufRead *.ts :setlocal tags=./tags;/
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=gray ctermbg=17 | :hi IndentGuidesEven guibg=gray ctermbg=17
     "autocmd VimEnter * :Vexplore
 endif
 
 nnoremap <C-LeftMouse> :ALEGoToDefinition<CR>
+nnoremap <C-I> :ALEGoToDefinition<CR>
