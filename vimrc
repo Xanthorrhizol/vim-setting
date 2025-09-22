@@ -251,6 +251,7 @@ if has('autocmd')
     autocmd FileType cs setlocal shiftwidth=4 softtabstop=-1 tabstop=8
     autocmd FileType indent plugin on
     autocmd FileType go setlocal tabstop=4 shiftwidth=4
+    autocmd FileType json setlocal tabstop=2 shiftwidth=2
     " enable below if you want to use prettier
     "autocmd BufWritePost *.ts :silent! exec "!prettier --loglevel silent --write " . expand('%:p') | :silent! exec "e" | :silent! exec "!ctags -R &" | redraw!
     autocmd BufWritePost *.ts redraw!
