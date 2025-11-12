@@ -57,6 +57,12 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Copolot
+Plug 'github/copilot.vim'
+
+" codeium
+Plug 'Exafunction/windsurf.vim'
+
 call plug#end()
 " }}}
 
