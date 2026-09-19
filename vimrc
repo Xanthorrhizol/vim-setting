@@ -253,6 +253,7 @@ if has('autocmd')
     autocmd FileType rust setlocal tabstop=4 shiftwidth=4
     autocmd FileType groovy setlocal tabstop=4 shiftwidth=4
     autocmd FileType c setlocal tabstop=4 shiftwidth=4
+    autocmd FileType cpp setlocal tabstop=4 shiftwidth=4
     autocmd FileType python setlocal tabstop=4 shiftwidth=4
     autocmd FileType cs setlocal shiftwidth=4 softtabstop=-1 tabstop=8
     autocmd FileType indent plugin on
